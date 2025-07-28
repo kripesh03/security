@@ -1,29 +1,41 @@
 import { useAuthContext } from '../context/auth'
 import { BsFillPersonFill } from "react-icons/bs"
 import { FaAddressCard } from "react-icons/fa"
-import { OverlayTrigger, Tooltip} from "react-bootstrap"
 
 const Status = () => {
   const { auth } = useAuthContext()
   const display = auth?.name && auth?.roles
 
-  const statusBar = {
-    Root: "bg-danger pt-1 text-white",
-    Admin: "bg-warning pt-1",
-    User: "bg-primary pt-1 text-white"
+  // Define color classes per role
+  const roleColors = {
+    Root: "bg-red-600 text-white",
+    Admin: "bg-yellow-400 text-black",
+    User: "bg-blue-600 text-white"
   }
-  const color = statusBar[auth?.roles]
+
+  const colorClass = roleColors[auth?.roles] || "bg-gray-500 text-white"
 
   return (
     <>
-      {display && (<div className={color}>
-        <OverlayTrigger placement="bottom" overlay={<Tooltip>Name</Tooltip>}>
-          <span className="mx-3 d-inline-flex align-items-center"><FaAddressCard className="fs-4"/>&ensp;{auth.name}</span>
-        </OverlayTrigger>
-        <OverlayTrigger placement="bottom" overlay={<Tooltip>Roles</Tooltip>}>
-          <span className="d-inline-flex align-items-center"><BsFillPersonFill className="fs-4"/>&ensp;{auth.roles}</span>
-        </OverlayTrigger>
-      </div>)}
+      {display && (
+        <div className={`w-full py-2 px-4 flex items-center justify-center gap-6 ${colorClass}`}>
+          <span
+            className="flex items-center gap-2 text-sm font-medium"
+            title="Name"
+          >
+            <FaAddressCard className="text-lg" />
+            {auth.name}
+          </span>
+
+          <span
+            className="flex items-center gap-2 text-sm font-medium"
+            title="Roles"
+          >
+            <BsFillPersonFill className="text-lg" />
+            {auth.roles}
+          </span>
+        </div>
+      )}
     </>
   )
 }
