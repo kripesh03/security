@@ -83,41 +83,74 @@ const View = () => {
   }
 
   return (
-    <>
-      {targetUser?.userName && notes && (<div className={`${color} bg-opacity-25 rounded pt-2 mb-3`}>
-        <span className="mx-3 d-inline-flex align-items-center"><FaAddressCard className="fs-4"/>&ensp;{targetUser?.userName}</span>
-        <span className="d-inline-flex align-items-center"><BsFillPersonFill className="fs-4"/>&ensp;{targetUser?.userRoles}</span>
-      </div>)}
+  <div className="bg-white rounded-lg shadow-sm p-6 mb-4">
+    {/* User Info Bar */}
+    {targetUser?.userName && notes && (
+      <div className={`${color} text-white rounded-md px-4 py-2 mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between`}>
+        <div className="flex items-center gap-3">
+          <FaAddressCard className="text-xl" />
+          <span className="font-semibold">{targetUser.userName}</span>
+        </div>
+        <div className="flex items-center gap-3 mt-2 sm:mt-0">
+          <BsFillPersonFill className="text-xl" />
+          <span className="font-semibold">{targetUser.userRoles}</span>
+        </div>
+      </div>
+    )}
 
-      {/* {notes && ( */}
-        <>
-          <Row className="align-items-center mb-4">
-            <Col>
-              <h1>{notes?.title}</h1>
-              {!notes?.length && (
-                <Stack gap={1} direction="horizontal" className="flex-wrap">
-                  {notes?.tag.map((tags, index) => (
-                    <Badge className="text-truncate" key={index}>{tags}</Badge>
-                  ))}
-                </Stack>
-              )}
-            </Col>
-            <Col xs="auto">
-              <Stack gap={2} direction="horizontal">
-                <Link to={`/note/edit/${id}`}>
-                  <Button variant="outline-primary" onClick={() => navigate(`/note/edit/${id}`, {replace: true})}><BsPencilSquare /></Button>
-                </Link>
-                <Button variant="outline-danger" onClick={deleteNote}><BsFillTrashFill /></Button>
-                <Button variant="outline-secondary" onClick={handleBack}><BiArrowBack /></Button>
-              </Stack>
-            </Col>
-          </Row>
-          
+    {notes && (
+      <>
+        {/* Title & Actions */}
+        <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
+          <div>
+            <button
+              className="inline-flex items-center px-3 py-2 border border-gray-400 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-100 transition"
+              onClick={handleBack}
+            >
+              <BiArrowBack className="mr-1" />
+              Back
+            </button>
+
+            <h2 className="text-2xl font-bold text-gray-800 m-2">{notes.title}</h2>
+            {!notes?.length && (
+              <div className="flex flex-wrap gap-2">
+                {notes?.tag.map((tags, index) => (
+                  <span key={index} className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded-full">
+                    {tags}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Buttons */}
+          <div className="flex gap-2">
+            <Link to={`/note/edit/${id}`}>
+              <button className="inline-flex items-center px-3 py-2 border border-blue-600 text-blue-600 text-sm font-medium rounded-md hover:bg-blue-50 transition">
+                <BsPencilSquare className="mr-1" />
+                Edit
+              </button>
+            </Link>
+            <button
+              className="inline-flex items-center px-3 py-2 border border-red-600 text-red-600 text-sm font-medium rounded-md hover:bg-red-50 transition"
+              onClick={deleteNote}
+            >
+              <BsFillTrashFill className="mr-1" />
+              Delete
+            </button>
+            
+          </div>
+        </div>
+
+        {/* Markdown Content */}
+        <div className="prose max-w-full text-gray-800">
           <ReactMarkdown>{notes?.text}</ReactMarkdown>
-        </>
-      {/* )} */}
-    </>
-  )
+        </div>
+      </>
+    )}
+  </div>
+)
+
 }
 
 export default View

@@ -19,32 +19,18 @@ const Index = ({ tasks }) => {
   return (
     <>
       {tasks.map(task => (<div className="card mt-2 mb-3 border-5 pt-2 pb-0 px-3" key={task._id}>
-        <div className="card-body">
-            <div className="row">
-                <div className="col-12 mb-2">
-                    <h4 className="card-title"><b>{task.title}</b></h4>
-                </div>
-                <div className="col">
-                  <h6 className="card-subtitle mb-2 text-muted">
-                    <p className="card-text text-muted small">
-                      <HiOutlineStar className="mr-1 fs-5"/>
-                      <span className="vl"></span>
-                      <MdAdminPanelSettings className="fs-4"/><span className="font-weight-bold">&nbsp;{task.createdBy.name}</span>
-                      <span className="vl"></span>
-                      <SiStatuspal className="fs-6"/><small>&ensp;{task.status}</small>
-                      <span className="vl"></span>
-                      <BsCalendarWeek className="fs-6"/><small>&ensp;{new Date(task.createdAt).toLocaleDateString('en-GB')}</small>
-                      <span className="vl"></span>
-                      <BiTimer className="fs-5"/><small>&ensp;{formatDistanceToNow(new Date(task.createdAt), { addSuffix: true })}</small>
-                      <span className="vl"></span>
-                      <BiTimer className="fs-5"/><small>&ensp;{formatDistanceToNow(new Date(task.updatedAt), { addSuffix: true })}</small>
-                    </p>
-                  </h6>
-                </div>
-            </div>
-            <div className="col">
-              <p className="card-text">{task.description}</p>
-            </div>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+          <div className="mt-6 ml-2">
+            <h2 className="text-xl font-semibold text-gray-800 mb-1">{task.title}</h2>
+            <p className="text-gray-500 text-sm">{task.description}</p>
+          </div>
+          <div className="flex gap-4 text-sm text-gray-600 mt-3 md:mt-0">
+            <div className="flex items-center gap-1"><MdAdminPanelSettings className="text-lg" />{task.createdBy.name}</div>
+            <div className="flex items-center gap-1"><SiStatuspal className="text-base" />{task.status}</div>
+            <div className="flex items-center gap-1"><BsCalendarWeek className="text-base" />{new Date(task.createdAt).toLocaleDateString('en-GB')}</div>
+            <div className="flex items-center gap-1"><BiTimer className="text-base" />Created {formatDistanceToNow(new Date(task.createdAt), { addSuffix: true })}</div>
+            <div className="flex items-center gap-1"><BiTimer className="text-base" />Updated {formatDistanceToNow(new Date(task.updatedAt), { addSuffix: true })}</div>
+          </div>
         </div>
         {admin && (
           <div className="card-footer bg-white px-0">
