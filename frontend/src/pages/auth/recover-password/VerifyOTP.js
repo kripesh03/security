@@ -50,7 +50,7 @@ const VerifyOTP = ({ email, setOTPVerify }) => {
     } catch (error) {
       setError(error.response.data.error)
       setIsLoading(false)
-      if (!error.response.data.otpVerifie) {
+      if (!error.response.data.otpVerified) {
         setTimeout(() => navigate('/not-found'), 10000)
       }
     }
