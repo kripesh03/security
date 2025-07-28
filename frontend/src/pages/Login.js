@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="max-w-md mx-auto mt-10 bg-white p-8 rounded-xl shadow-lg">
+      <div className="max-w-md mx-auto mt-10 bg-white p-8 rounded-xl shadow-md">
         <h3 className="text-2xl font-bold text-center mb-1">Log In</h3>
         <p className="text-sm text-gray-500 text-center mb-6">Welcome back! Please log in to continue.</p>
 

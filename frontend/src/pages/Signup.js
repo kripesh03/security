@@ -62,7 +62,7 @@ const Signup = () => {
   return (
     <>
       {!mailSent && (
-        <div className="max-w-md mx-auto mt-10 bg-white p-8 rounded-xl shadow-lg">
+        <div className="max-w-md mx-auto mt-10 bg-white p-8 rounded-xl shadow-md">
           <h2 className="text-2xl font-bold text-center mb-1">
             Create Your Account
           </h2>
