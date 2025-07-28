@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Modal, Button } from 'react-bootstrap'
-import { BsFillTrashFill } from 'react-icons/bs'
+import { BsFillTrash3Fill } from 'react-icons/bs'
 import { GoAlert } from 'react-icons/go'
 import { useUserContext } from '../../context/user'
 import { useAuthContext } from '../../context/auth'
@@ -33,7 +33,9 @@ const Delete = ({user}) => {
 
   return (
     <>
-      <button className="btn btn-outline-danger p-1" onClick={() => setShow(!show)}><BsFillTrashFill className="fs-4"/></button>
+      <button className="p-1 text-danger border-0 bg-transparent" onClick={() => setShow(!show)}>
+  <BsFillTrash3Fill className="fs-4" />
+</button>
       
       <Modal show={show} onHide={() => {setShow(!show);setError(null)}} centered>
         <Modal.Header closeButton>

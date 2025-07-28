@@ -16,7 +16,9 @@ const View = ({ user }) => {
 
   return (
     <>
-      <button className="btn btn-outline-secondary p-1" onClick={() => setShow(!show)}><FaEye className="fs-4"/></button>
+      <button className="p-1 text-secondary border-0 bg-transparent" onClick={() => setShow(!show)}>
+  <FaEye className="fs-4" />
+</button>
 
       <Modal show={show} onHide={() => {setShow(!show)}} centered>
         <Modal.Header closeButton>

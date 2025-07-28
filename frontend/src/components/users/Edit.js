@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { ROLES } from '../../config/roles'
-import { BsPencilSquare } from 'react-icons/bs'
+import { BsFillPencilFill  } from 'react-icons/bs'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { Alert, Button, Form, Modal } from 'react-bootstrap'
 import { useUserContext } from '../../context/user'
@@ -73,7 +73,9 @@ const Edit = ({ user }) => {
     
   return (
     <>
-      <button className="btn btn-outline-primary mx-2 p-1" onClick={() => setShow(!show)}><BsPencilSquare className="fs-4"/></button>
+      <button className="p-1 mx-2 text-primary border-0 bg-transparent" onClick={() => setShow(!show)}>
+  <BsFillPencilFill className="fs-4" />
+</button>
       
       <Modal show={show} onHide={() => {setShow(!show);setError(null)}} centered>
         <Modal.Header closeButton>
