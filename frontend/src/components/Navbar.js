@@ -30,7 +30,7 @@ const Navbars = () => {
           {auth ? (
             <button
               onClick={logout}
-              className="border border-red-900 text-red-600 px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-red-600 hover:text-white transition"
+              className="border border-red-800 text-red-600 px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-red-600 hover:text-white transition"
             >
               Log Out
             </button>

@@ -104,7 +104,7 @@ const View = () => {
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-6">
           <div>
             <button
-              className="inline-flex items-center px-3 py-2 border border-gray-400 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-100 transition"
+              className="inline-flex items-center px-3 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-md hover:bg-gray-100 transition"
               onClick={handleBack}
             >
               <BiArrowBack className="mr-1" />
@@ -115,7 +115,7 @@ const View = () => {
             {!notes?.length && (
               <div className="flex flex-wrap gap-2">
                 {notes?.tag.map((tags, index) => (
-                  <span key={index} className="bg-gray-100 text-gray-700 text-xs font-medium px-3 py-1 rounded-full">
+                  <span key={index} className="bg-gray-100 text-gray-400 text-xs font-medium px-3 py-1 rounded-full">
                     {tags}
                   </span>
                 ))}
