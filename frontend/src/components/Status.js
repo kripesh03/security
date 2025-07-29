@@ -13,7 +13,7 @@ const Status = () => {
     User: "bg-blue-600 text-white"
   }
 
-  const colorClass = roleColors[auth?.roles] || "bg-gray-500 text-white"
+  const colorClass = roleColors[auth?.roles] || "bg-gray-600 text-white"
 
   return (
     <>

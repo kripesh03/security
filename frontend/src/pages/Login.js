@@ -63,7 +63,7 @@ const Login = () => {
           </div>
 
           <button
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200"
+            className="w-full bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 rounded-lg transition duration-200"
             disabled={isLoading}
           >
             Log In
