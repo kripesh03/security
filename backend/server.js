@@ -55,7 +55,7 @@ app.use(requireAuth);
 app.use(auditLogger);
 
 setupSocket(io);
-
+app.use('/api/audit-logs', require('./routes/audit'))
 app.use("/api/users", require("./routes/user"));
 app.use("/api/tasks", require("./routes/task"));
 app.use("/api/notes", require("./routes/note"));
