@@ -47,11 +47,13 @@ app.use(
   })
 );
 app.use(passport.initialize());
-app.use(auditLogger);
 
 app.use("/api/auth", require("./routes/auth"));
 
 app.use(requireAuth);
+
+app.use(auditLogger);
+
 setupSocket(io);
 
 app.use("/api/users", require("./routes/user"));
