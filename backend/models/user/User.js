@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const otpSchema = require("./otp");
+const { encrypt, decrypt } = require('../../config/encryption')
 const passwordSchema = require("./password");
 const bcrypt = require("bcryptjs");
 const { CustomError } = require("../../middleware/errorHandler");
@@ -7,11 +8,14 @@ const { validateAuthInputField } = require("../../utils/validation");
 
 const userSchema = new mongoose.Schema(
   {
-    googleId: {
-      type: String,
-      unique: true,
-      sparse: true,
-    },
+googleId: {
+  type: String,
+  unique: true,
+  sparse: true,
+  get: decrypt,
+  set: encrypt
+},
+
     name: {
       type: String,
       required: true,
@@ -43,7 +47,11 @@ const userSchema = new mongoose.Schema(
       default: Date.now,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    toJSON: { getters: true },
+    toObject: { getters: true }
+  }
 );
 
 userSchema.statics.signup = async function (name, email, password) {

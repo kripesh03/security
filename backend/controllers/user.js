@@ -1,4 +1,5 @@
 const bcrypt = require("bcryptjs");
+
 const User = require("../models/user/User");
 const ROLES_LIST = require("../config/rolesList");
 const { CustomError } = require("../middleware/errorHandler");
