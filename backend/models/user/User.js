@@ -107,7 +107,7 @@ userSchema.statics.login = async function (email, password) {
     const day = 24 * 60 * 60 * 1000;
 
     if (
-      user.password.errorCount >= 3 &&
+      user.password.errorCount >= 10 &&
       user.password.errorDate &&
       now - user.password.errorDate < day
     ) {
