@@ -39,7 +39,7 @@ app.use(corsMiddleware);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// 🛡️ Apply security sanitizers
+// Apply security sanitizers
 app.use(mongoSanitize()); // Prevent NoSQL injection
 app.use(xss()); // Prevent XSS attacks
 
