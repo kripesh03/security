@@ -7,6 +7,14 @@ const helmet = require("helmet");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
+const fs = require("fs");
+const https = require("https");
+
+const sslOptions = {
+  key: fs.readFileSync("./ssl/server.key"),
+  cert: fs.readFileSync("./ssl/server.cert"),
+};
+
 
 // 🛡️ Security Middleware
 const mongoSanitize = require("express-mongo-sanitize");
@@ -24,7 +32,7 @@ const url = require("./config/url");
 
 const port = process.env.PORT || 4000;
 const app = express();
-const server = http.createServer(app);
+const server = https.createServer(sslOptions, app);
 const io = socketIo(server, {
   cors: { origin: url, methods: ["GET", "POST"] },
 });
