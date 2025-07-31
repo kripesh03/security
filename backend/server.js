@@ -34,7 +34,15 @@ connectDB();
 passportSetup();
 
 // 🧱 Standard Middleware
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: true,
+    referrerPolicy: { policy: "no-referrer" },
+    frameguard: { action: "deny" },
+    xssFilter: true,
+    hidePoweredBy: true,
+  })
+);
 app.use(corsMiddleware);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
