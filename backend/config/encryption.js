@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 
 const ALGORITHM = "aes-256-cbc";
-const SECRET_KEY = Buffer.from(process.env.GOOGLE_ID_ENCRYPTION_KEY, "utf8"); // if using string directly
+const SECRET_KEY = Buffer.from(process.env.GOOGLE_ID_ENCRYPTION_KEY, "utf8");
 const IV_LENGTH = 16;
 
 function encrypt(text) {
